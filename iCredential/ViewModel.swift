@@ -18,6 +18,8 @@ class ViewModel: ObservableObject {
     var coreDataContainer: NSPersistentContainer
     @Published var isLoading: Bool = false
     @Published var errorMessage: AppError? = nil
+    @Published var isShowAddCridentalView: Bool = false
+    @Published var isShowDetailCridentalView: Bool = false
     var selectedCridential: Cridentials? = nil
     
     init() {
@@ -80,9 +82,13 @@ class ViewModel: ObservableObject {
         }
     }
 
-    func deleteCridential(data: Cridentials) {
+    func deleteCridential(data: Cridentials?) {
         isLoading = true
         errorMessage = nil // Clear previous error
+        guard let data = data else {
+            self.handleError("Due to some issue we can't delete the cridential \n please try again..")
+            return
+        }
         coreDataContainer.performBackgroundTask { [weak self] context in
             guard let self = self else { return }
             let objectId = data.objectID
@@ -100,9 +106,13 @@ class ViewModel: ObservableObject {
         }
     }
 
-    func updateCridential(data: Cridentials, accountName: String, userName: String, password: String) {
+    func updateCridential(data: Cridentials?, accountName: String, userName: String, password: String) {
         isLoading = true
         errorMessage = nil // Clear previous error
+        guard let data = data else {
+            self.handleError("Due to some issue we can't update the cridential \n please try again")
+            return
+        }
         coreDataContainer.performBackgroundTask { [weak self] context in
             guard let self = self else { return }
             let objectId = data.objectID

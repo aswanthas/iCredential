@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
     @State private var isPresenting: Bool = false
     @State var selectedDetent: PresentationDetent = .medium
     @State private var isShowCridentialDeatil: Bool = false
@@ -27,8 +27,9 @@ struct ContentView: View {
                                     .frame(height: 67)
                                     .onTapGesture {
                                         // Select the item and show bottom sheet
-                                        selectedCridential = item
-                                        isShowCridentialDeatil = true
+                                        viewModel.selectedCridential = item
+                                        guard let _ = viewModel.selectedCridential else { return }
+                                        viewModel.isShowDetailCridentalView = true
                                     }
                             }
                         }
@@ -41,7 +42,7 @@ struct ContentView: View {
                             Spacer()
                             Button(action: {
                                 // Toggle bottom sheet for adding new credential
-                                isPresenting.toggle()
+                                viewModel.isShowAddCridentalView.toggle()
                             }, label: {
                                 // Button content
                                 HStack {
@@ -79,7 +80,7 @@ struct ContentView: View {
                     )
                 }
             }
-            .sheet(isPresented: $isPresenting) {
+            .sheet(isPresented: $viewModel.isShowAddCridentalView) {
                 AddCridentialView(isShown: $isPresenting)
                     .presentationDetents([.large,.medium,.fraction(0.75)])
             }
@@ -87,12 +88,16 @@ struct ContentView: View {
 //            BottomSheetView(isShown: $isPresenting, cornerRadius: 12) {
 //                AddCridentialView(isShown: $isPresenting)
 //            }
+            .sheet(isPresented: $viewModel.isShowDetailCridentalView, content: {
+                CridentialDetailsView()
+                    .presentationDetents([.large,.medium,.fraction(0.75)])
+            })
             // Bottom sheet for updating selected credential
-            if isShowCridentialDeatil, let selectedCridential = selectedCridential {
-                BottomSheetView(isShown: $isShowCridentialDeatil, cornerRadius: 12) {
-                    CridentialDetailsView(data: selectedCridential, isShown: $isShowCridentialDeatil)
-                }
-            }
+//            if isShowCridentialDeatil, let selectedCridential = selectedCridential {
+//                BottomSheetView(isShown: $isShowCridentialDeatil, cornerRadius: 12) {
+//                    CridentialDetailsView(isShown: $isShowCridentialDeatil)
+//                }
+//            }
         }
         .environmentObject(viewModel)
     }

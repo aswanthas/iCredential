@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct CridentialDetailsView: View {
-    var data: Cridentials
+//    var data: Cridentials
     @EnvironmentObject var viewModel: ViewModel // Inject ViewModel
-    @Binding var isShown: Bool
     @State private var isEditing: Bool = false
     @State private var editedAccountName: String = ""
     @State private var editedUserName: String = ""
@@ -25,7 +24,7 @@ struct CridentialDetailsView: View {
                     TextField("Account Name", text: $editedAccountName)
                         .font(Font.system(size: 16, weight: .bold, design: .rounded))
                 } else {
-                    Text(data.accountName ?? "")
+                    Text(viewModel.selectedCridential?.accountName ?? "")
                         .font(Font.system(size: 16, weight: .bold, design: .rounded))
                 }
             }
@@ -38,7 +37,7 @@ struct CridentialDetailsView: View {
                     TextField("Username/Email", text: $editedUserName)
                         .font(Font.system(size: 16, weight: .bold, design: .rounded))
                 } else {
-                    Text(data.userName ?? "")
+                    Text(viewModel.selectedCridential?.userName ?? "")
                         .font(Font.system(size: 16, weight: .bold, design: .rounded))
                 }
             }
@@ -54,7 +53,7 @@ struct CridentialDetailsView: View {
                             .font(.headline)
                     } else {
                         if passwordToggle {
-                            Text(viewModel.decryptedPassword(data: data.password ?? ""))
+                            Text(viewModel.decryptedPassword(data: viewModel.selectedCridential?.password ?? ""))
                                 .font(.headline)
                         } else {
                             SecureField("******", text: Binding<String>(
@@ -83,11 +82,11 @@ struct CridentialDetailsView: View {
                 if isEditing {
                     Button(action: {
                         // Cancel editing
-                        editedAccountName = data.accountName ?? ""
-                        editedUserName = data.userName ?? ""
+                        editedAccountName = viewModel.selectedCridential?.accountName ?? ""
+                        editedUserName = viewModel.selectedCridential?.userName ?? ""
                         editedPassword = ""
                         isEditing = false
-                        isShown = false // Dismiss the view
+                        viewModel.isShowDetailCridentalView = false // Dismiss the view
                     }) {
                         Text("Cancel")
                             .font(Font.system(size: 16, weight: .bold, design: .rounded))
@@ -100,9 +99,9 @@ struct CridentialDetailsView: View {
                     Spacer()
                     Button(action: {
                         // Save changes
-                        viewModel.updateCridential(data: data, accountName: editedAccountName, userName: editedUserName, password: editedPassword)
+                        viewModel.updateCridential(data: viewModel.selectedCridential, accountName: editedAccountName, userName: editedUserName, password: editedPassword)
                         isEditing = false
-                        isShown = false // Dismiss the view
+                        viewModel.isShowDetailCridentalView = false // Dismiss the view
                     }) {
                         Text("Update")
                             .font(Font.system(size: 16, weight: .bold, design: .rounded))
@@ -116,8 +115,8 @@ struct CridentialDetailsView: View {
                     Button(action: {
                         // Edit action
                         isEditing = true
-                        editedAccountName = data.accountName ?? ""
-                        editedUserName = data.userName ?? ""
+                        editedAccountName = viewModel.selectedCridential?.accountName ?? ""
+                        editedUserName = viewModel.selectedCridential?.userName ?? ""
                         editedPassword = ""
                     }) {
                         Text("Edit")
@@ -131,8 +130,8 @@ struct CridentialDetailsView: View {
                     Spacer()
                     Button(action: {
                         // Delete action
-                        viewModel.deleteCridential(data: data)
-                        isShown = false // Dismiss the view
+                        viewModel.deleteCridential(data: nil)
+                        viewModel.isShowDetailCridentalView = false // Dismiss the view
                     }) {
                         Text("Delete")
                             .font(Font.system(size: 16, weight: .bold, design: .rounded))

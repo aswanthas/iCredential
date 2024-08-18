@@ -29,7 +29,7 @@ struct AddCridentialView: View {
                     // Perform input validation
                     if isValidInput() {
                         viewModel.addNewCridential(accountName: accountName, userName: userName, password: password)
-                       isShown = false // Dismiss the view
+                        viewModel.isShowAddCridentalView = false // Dismiss the view
                     } else {
                         showingAlert = true
                     }
