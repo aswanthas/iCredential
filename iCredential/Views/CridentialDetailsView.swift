@@ -130,7 +130,7 @@ struct CridentialDetailsView: View {
                     Spacer()
                     Button(action: {
                         // Delete action
-                        viewModel.deleteCridential(data: nil)
+                        viewModel.deleteCridential(data: viewModel.selectedCridential)
                         viewModel.isShowDetailCridentalView = false // Dismiss the view
                     }) {
                         Text("Delete")

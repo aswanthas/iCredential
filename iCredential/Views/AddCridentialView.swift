@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddCridentialView: View {
+struct AddCredentialView: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var isShown: Bool
     @State private var accountName: String = ""

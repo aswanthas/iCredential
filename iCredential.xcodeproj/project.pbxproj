@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D3FA31C2C737D4C00B5D283 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FA31B2C737D4C00B5D283 /* LockView.swift */; };
+		7D3FA31E2C73B54B00B5D283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FA31D2C73B54B00B5D283 /* AppDelegate.swift */; };
 		7D9B3A832C2BD7BE00A4EE08 /* iCredentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B3A822C2BD7BE00A4EE08 /* iCredentialApp.swift */; };
 		7D9B3A872C2BD7BF00A4EE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D9B3A862C2BD7BF00A4EE08 /* Assets.xcassets */; };
 		7D9B3A8A2C2BD7BF00A4EE08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D9B3A892C2BD7BF00A4EE08 /* Preview Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D3FA31B2C737D4C00B5D283 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
+		7D3FA31D2C73B54B00B5D283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D9B3A7F2C2BD7BE00A4EE08 /* iCredential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCredential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9B3A822C2BD7BE00A4EE08 /* iCredentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCredentialApp.swift; sourceTree = "<group>"; };
 		7D9B3A862C2BD7BF00A4EE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				7D9B3A822C2BD7BE00A4EE08 /* iCredentialApp.swift */,
+				7D3FA31D2C73B54B00B5D283 /* AppDelegate.swift */,
 				7D9B3A952C2BD7ED00A4EE08 /* ContentView.swift */,
 				7D9B3A962C2BD7ED00A4EE08 /* Data */,
 				7D9B3A942C2BD7ED00A4EE08 /* ViewModel.swift */,
@@ -91,6 +96,7 @@
 				7D9B3A912C2BD7ED00A4EE08 /* CridentialDetailsView.swift */,
 				7D9B3A922C2BD7ED00A4EE08 /* AddCridentialView.swift */,
 				7D9B3A932C2BD7ED00A4EE08 /* CridentialCard.swift */,
+				7D3FA31B2C737D4C00B5D283 /* LockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,9 +196,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D3FA31E2C73B54B00B5D283 /* AppDelegate.swift in Sources */,
 				7D9B3A9C2C2BD7ED00A4EE08 /* ViewModel.swift in Sources */,
 				7D9B3A9B2C2BD7ED00A4EE08 /* CridentialCard.swift in Sources */,
 				7D9B3AA42C2BD81300A4EE08 /* BottomSheetView.swift in Sources */,
+				7D3FA31C2C737D4C00B5D283 /* LockView.swift in Sources */,
 				7D9B3A9E2C2BD7ED00A4EE08 /* PasswordCridentialContainer.xcdatamodeld in Sources */,
 				7D9B3A9D2C2BD7ED00A4EE08 /* ContentView.swift in Sources */,
 				7D9B3A992C2BD7ED00A4EE08 /* CridentialDetailsView.swift in Sources */,
@@ -336,6 +344,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = iCredential;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to authenticate you with Face ID.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -370,9 +379,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = iCredential;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to authenticate you with Face ID.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

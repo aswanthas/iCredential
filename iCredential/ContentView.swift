@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = ViewModel()
+    @EnvironmentObject var viewModel: ViewModel
     @State private var isPresenting: Bool = false
     @State var selectedDetent: PresentationDetent = .medium
     @State private var isShowCridentialDeatil: Bool = false
@@ -34,8 +34,8 @@ struct ContentView: View {
                             }
                         }
                         .padding(.horizontal, 16)
+                        .padding(.top, 20)
                     }
-                    .padding(.top, 20)
                     VStack {
                         Spacer()
                         HStack {
@@ -74,14 +74,14 @@ struct ContentView: View {
                 
                 .alert(item: $viewModel.errorMessage) { error in
                     Alert(
-                        title: Text("Error"),
+                        title: Text("Warnning"),
                         message: Text(error.message),
                         dismissButton: .default(Text("OK"))
                     )
                 }
             }
             .sheet(isPresented: $viewModel.isShowAddCridentalView) {
-                AddCridentialView(isShown: $isPresenting)
+                AddCredentialView(isShown: $isPresenting)
                     .presentationDetents([.large,.medium,.fraction(0.75)])
             }
             // Bottom sheet for adding new credential

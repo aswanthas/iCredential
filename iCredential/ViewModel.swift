@@ -9,11 +9,8 @@ import Foundation
 import CoreData
 import SwiftUI
 
-import Foundation
-import CoreData
-import SwiftUI
-
-class ViewModel: ObservableObject {
+public final class ViewModel: ObservableObject {
+    @Published var currentView: AppView = .lockScreen
     @Published var savedPasswords: [Cridentials] = []
     var coreDataContainer: NSPersistentContainer
     @Published var isLoading: Bool = false
@@ -86,7 +83,7 @@ class ViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil // Clear previous error
         guard let data = data else {
-            self.handleError("Due to some issue we can't delete the cridential \n please try again..")
+            self.handleError("Unable to delete the credential. Please try again.")
             return
         }
         coreDataContainer.performBackgroundTask { [weak self] context in
@@ -101,7 +98,7 @@ class ViewModel: ObservableObject {
                     self.fetchPasswordCridentials() // Update after deletion
                 }
             } catch let error as NSError {
-                self.handleError("Error deleting cridential: \(error.localizedDescription)")
+                self.handleError("Error deleting credential: \(error.localizedDescription)")
             }
         }
     }
@@ -110,7 +107,7 @@ class ViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil // Clear previous error
         guard let data = data else {
-            self.handleError("Due to some issue we can't update the cridential \n please try again")
+            self.handleError("Unable to update the credential. Please try again.")
             return
         }
         coreDataContainer.performBackgroundTask { [weak self] context in
@@ -136,7 +133,7 @@ class ViewModel: ObservableObject {
                     self.handleError("Error: Object not found in the current context")
                 }
             } catch let error as NSError {
-                self.handleError("Error updating cridential: \(error.localizedDescription)")
+                self.handleError("Error updating credential: \(error.localizedDescription)")
             }
         }
     }
@@ -157,4 +154,9 @@ class ViewModel: ObservableObject {
 struct AppError: Identifiable {
     let id = UUID() // Each instance will have a unique ID
     let message: String
+}
+
+enum AppView {
+    case lockScreen
+    case homeView
 }
