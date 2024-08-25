@@ -43,7 +43,7 @@ struct AddCredentialView: View {
                         Spacer()
                     }
                     .frame(height: 44)
-                    .background(Color.black)
+                    .background(.color2C2C2C)
                     .cornerRadius(12)
                 }
             }
@@ -52,7 +52,6 @@ struct AddCredentialView: View {
                 Alert(title: Text("Validation Error"), message: Text("Please fill in all fields."), dismissButton: .default(Text("OK")))
             }
         }
-        .background(Color.colorF9F9F9)
     }
 
     private func isValidInput() -> Bool {

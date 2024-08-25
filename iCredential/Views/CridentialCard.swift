@@ -21,13 +21,14 @@ struct CridentialCard: View {
             .font(.headline)
             .disabled(true)
             Spacer()
-            Image("arrow_right")
+            Image(systemName: "chevron.right")
                 .resizable()
                 .scaledToFit()
+                .foregroundColor(.color2C2C2C)
                 .frame(width: 14, height: 16)
         }
         .padding(20)
-        .background(Color.white)
+        .background(Color.cell)
         .cornerRadius(50)
         .overlay(
             RoundedRectangle(cornerRadius: 50)

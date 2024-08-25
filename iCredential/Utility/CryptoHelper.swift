@@ -50,27 +50,4 @@ class CryptoHelper {
             return nil
         }
     }
-    
-    // Encrypt raw data and return the encrypted data.
-    static func encryptData(_ data: Data) -> Data? {
-        do {
-            let sealedBox = try AES.GCM.seal(data, using: key)
-            return sealedBox.combined
-        } catch {
-            print("Error encrypting data: \(error)")
-            return nil
-        }
-    }
-    
-    // Decrypt raw encrypted data.
-    static func decryptData(_ data: Data) -> Data? {
-        do {
-            let sealedBox = try AES.GCM.SealedBox(combined: data)
-            let decryptedData = try AES.GCM.open(sealedBox, using: key)
-            return decryptedData
-        } catch {
-            print("Error decrypting data: \(error)")
-            return nil
-        }
-    }
 }

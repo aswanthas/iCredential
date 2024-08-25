@@ -12,24 +12,24 @@ struct LockView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State private var isUnlocked = false
     @State private var authenticationError: String?
-    
+
     var body: some View {
         VStack {
             if isUnlocked {
                 Text("Welcome, you're authenticated!")
-                    .font(.largeTitle)
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
                     .padding()
             } else {
                 Text("Please authenticate using Face ID")
-                    .font(.title2)
+                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .foregroundColor(.primary)
                     .padding()
-                
                 if let error = authenticationError {
                     Text(error)
+                        .font(.system(size: 12, weight: .medium, design: .rounded))
                         .foregroundColor(.red)
                         .padding()
                 }
-                
                 Button(action: authenticate) {
                     Text("Authenticate")
                         .font(.headline)

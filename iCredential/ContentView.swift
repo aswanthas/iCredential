@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var isPresenting: Bool = false
     @State var selectedDetent: PresentationDetent = .medium
     @State private var isShowCridentialDeatil: Bool = false
-    @State private var selectedCridential: Cridentials? = nil // Track selected credential
+    @State private var selectedCridential: Cridentials? = nil
     
     var body: some View {
         ZStack {
@@ -20,39 +20,41 @@ struct ContentView: View {
                 ZStack {
                     Color.colorEDEDED
                         .ignoresSafeArea(.all)
-                    ScrollView {
-                        VStack {
-                            ForEach(viewModel.savedPasswords, id: \.id) { item in
-                                CridentialCard(data: item)
-                                    .frame(height: 67)
-                                    .onTapGesture {
-                                        // Select the item and show bottom sheet
-                                        viewModel.selectedCridential = item
-                                        guard let _ = viewModel.selectedCridential else { return }
-                                        viewModel.isShowDetailCridentalView = true
-                                    }
+                    if viewModel.savedPasswords.isEmpty {
+                        Text("**Save your credential here**")
+                            .foregroundStyle(.color2C2C2C)
+                    } else {
+                        ScrollView {
+                            VStack {
+                                ForEach(viewModel.savedPasswords, id: \.id) { item in
+                                    CridentialCard(data: item)
+                                        .frame(height: 67)
+                                        .onTapGesture {
+                                            viewModel.selectedCridential = item
+                                            guard let _ = viewModel.selectedCridential else { return }
+                                            viewModel.isShowDetailCridentalView = true
+                                        }
+                                }
                             }
+                            .padding(.horizontal, 16)
+                            .padding(.top, 20)
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 20)
                     }
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
                             Button(action: {
-                                // Toggle bottom sheet for adding new credential
                                 viewModel.isShowAddCridentalView.toggle()
                             }, label: {
-                                // Button content
                                 HStack {
                                     Image(systemName: "plus")
                                         .font(.largeTitle)
                                         .foregroundColor(.white)
                                 }
-                                .padding(20) // Larger padding for a bigger button
+                                .padding(20)
                                 .background(Color.blue)
-                                .cornerRadius(25) // More rounded corners
+                                .cornerRadius(25)
                                 .shadow(color: .gray.opacity(0.5), radius: 10, x: 5, y: 5)
                             })
                             .buttonStyle(PlainButtonStyle())
@@ -70,8 +72,6 @@ struct ContentView: View {
                     }
                 }
                 .navigationTitle(Text("Password Manager"))
-                // Set navigation bar background color
-                
                 .alert(item: $viewModel.errorMessage) { error in
                     Alert(
                         title: Text("Warnning"),
@@ -84,20 +84,10 @@ struct ContentView: View {
                 AddCredentialView(isShown: $isPresenting)
                     .presentationDetents([.large,.medium,.fraction(0.75)])
             }
-            // Bottom sheet for adding new credential
-//            BottomSheetView(isShown: $isPresenting, cornerRadius: 12) {
-//                AddCridentialView(isShown: $isPresenting)
-//            }
             .sheet(isPresented: $viewModel.isShowDetailCridentalView, content: {
                 CridentialDetailsView()
                     .presentationDetents([.large,.medium,.fraction(0.75)])
             })
-            // Bottom sheet for updating selected credential
-//            if isShowCridentialDeatil, let selectedCridential = selectedCridential {
-//                BottomSheetView(isShown: $isShowCridentialDeatil, cornerRadius: 12) {
-//                    CridentialDetailsView(isShown: $isShowCridentialDeatil)
-//                }
-//            }
         }
         .environmentObject(viewModel)
     }
