@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B63BE52E168E62006D5918 /* SheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B63BE42E168E62006D5918 /* SheetModifier.swift */; };
 		7D3FA31C2C737D4C00B5D283 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FA31B2C737D4C00B5D283 /* LockView.swift */; };
 		7D3FA31E2C73B54B00B5D283 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3FA31D2C73B54B00B5D283 /* AppDelegate.swift */; };
 		7D9B3A832C2BD7BE00A4EE08 /* iCredentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B3A822C2BD7BE00A4EE08 /* iCredentialApp.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B63BE42E168E62006D5918 /* SheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetModifier.swift; sourceTree = "<group>"; };
 		7D3FA31B2C737D4C00B5D283 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		7D3FA31D2C73B54B00B5D283 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D9B3A7F2C2BD7BE00A4EE08 /* iCredential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCredential.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				7D9B3AA02C2BD81300A4EE08 /* CryptoHelper.swift */,
+				24B63BE42E168E62006D5918 /* SheetModifier.swift */,
 				7D9B3AA12C2BD81300A4EE08 /* View */,
 			);
 			path = Utility;
@@ -198,6 +201,7 @@
 			files = (
 				7D3FA31E2C73B54B00B5D283 /* AppDelegate.swift in Sources */,
 				7D9B3A9C2C2BD7ED00A4EE08 /* ViewModel.swift in Sources */,
+				24B63BE52E168E62006D5918 /* SheetModifier.swift in Sources */,
 				7D9B3A9B2C2BD7ED00A4EE08 /* CridentialCard.swift in Sources */,
 				7D9B3AA42C2BD81300A4EE08 /* BottomSheetView.swift in Sources */,
 				7D3FA31C2C737D4C00B5D283 /* LockView.swift in Sources */,
@@ -337,10 +341,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iCredential/Preview Content\"";
-				DEVELOPMENT_TEAM = 4L6U4CV9PQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = iCredential;
@@ -357,6 +362,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = aswanth.app.iCredentialApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -372,10 +378,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iCredential/Preview Content\"";
-				DEVELOPMENT_TEAM = 4L6U4CV9PQ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = iCredential;
@@ -393,6 +400,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = aswanth.app.iCredentialApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

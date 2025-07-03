@@ -18,7 +18,7 @@ struct AddCredentialView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 24) {
-                EmptyView()
+//                EmptyView()
                 TextField("AccountName", text: $accountName)
                     .textFieldStyle(.roundedBorder)
                 TextField("UserName/Email", text: $userName)
@@ -46,12 +46,14 @@ struct AddCredentialView: View {
                     .background(.color2C2C2C)
                     .cornerRadius(12)
                 }
+                Spacer()
             }
-            .padding(.horizontal, 16)
+            .padding(16)
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("Validation Error"), message: Text("Please fill in all fields."), dismissButton: .default(Text("OK")))
             }
         }
+//        .frame(maxHeight: .infinity, alignment: .top)
     }
 
     private func isValidInput() -> Bool {
